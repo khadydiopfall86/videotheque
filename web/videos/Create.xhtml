@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VideosCreateDlg" widgetVar="VideosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateVideosTitle}">
+            <h:form id="VideosCreateForm" enctype="multipart/form-data"><!-- pour ajouter une imange pour une langage donnee-->
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{videosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateVideosLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{videosController.selected.id}" title="#{bundle.CreateVideosTitle_id}" required="true" requiredMessage="#{bundle.CreateVideosRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateVideosLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{videosController.selected.nom}" title="#{bundle.CreateVideosTitle_nom}" required="true" requiredMessage="#{bundle.CreateVideosRequiredMessage_nom}"/>
+                        <p:outputLabel value="#{bundle.CreateVideosLabel_synopsie}" for="synopsie" />
+                        <p:inputTextarea rows="4" cols="30" id="synopsie" value="#{videosController.selected.synopsie}" title="#{bundle.CreateVideosTitle_synopsie}" required="true" requiredMessage="#{bundle.CreateVideosRequiredMessage_synopsie}"/>
+                        <p:outputLabel value="#{bundle.CreateVideosLabel_duree}" for="duree" />
+                        <p:inputText id="duree" value="#{videosController.selected.duree}" title="#{bundle.CreateVideosTitle_duree}" />
+                        <p:outputLabel value="#{bundle.CreateVideosLabel_annee}" for="annee" />
+                        <p:inputText id="annee" value="#{videosController.selected.annee}" title="#{bundle.CreateVideosTitle_annee}" required="true" requiredMessage="#{bundle.CreateVideosRequiredMessage_annee}"/>
+                        <p:outputLabel value="#{bundle.CreateVideosLabel_image}" for="image" />
+                        <p:inputTextarea rows="4" cols="30" id="image" title="#{bundle.CreateVideosTitle_image}" />
+                        <p:outputLabel value="#{bundle.CreateVideosLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{videosController.selected.type}" title="#{bundle.CreateVideosTitle_type}" required="true" requiredMessage="#{bundle.CreateVideosRequiredMessage_type}"/>
+                        <p:outputLabel value="#{bundle.CreateVideosLabel_prix}" for="prix" />
+                        <p:inputText id="prix" value="#{videosController.selected.prix}" title="#{bundle.CreateVideosTitle_prix}" required="true" requiredMessage="#{bundle.CreateVideosRequiredMessage_prix}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{videosController.create}" value="#{bundle.Save}" update="display,:VideosListForm:datalist,:growl" oncomplete="handleSubmit(args,'VideosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VideosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

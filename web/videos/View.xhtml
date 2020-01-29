@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VideosViewDlg" widgetVar="VideosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVideosTitle}">
+            <h:form id="VideosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{videosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewVideosLabel_id}"/>
+                        <h:outputText value="#{videosController.selected.id}" title="#{bundle.ViewVideosTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewVideosLabel_nom}"/>
+                        <h:outputText value="#{videosController.selected.nom}" title="#{bundle.ViewVideosTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewVideosLabel_synopsie}"/>
+                        <h:outputText value="#{videosController.selected.synopsie}" title="#{bundle.ViewVideosTitle_synopsie}"/>
+                        <h:outputText value="#{bundle.ViewVideosLabel_duree}"/>
+                        <h:outputText value="#{videosController.selected.duree}" title="#{bundle.ViewVideosTitle_duree}"/>
+                        <h:outputText value="#{bundle.ViewVideosLabel_annee}"/>
+                        <h:outputText value="#{videosController.selected.annee}" title="#{bundle.ViewVideosTitle_annee}"/>
+                        <h:outputText value="#{bundle.ViewVideosLabel_image}"/>
+                        <h:outputText value="#{videosController.selected.image}" title="#{bundle.ViewVideosTitle_image}"/>
+                        <h:outputText value="#{bundle.ViewVideosLabel_type}"/>
+                        <h:outputText value="#{videosController.selected.type}" title="#{bundle.ViewVideosTitle_type}"/>
+                        <h:outputText value="#{bundle.ViewVideosLabel_prix}"/>
+                        <h:outputText value="#{videosController.selected.prix}" title="#{bundle.ViewVideosTitle_prix}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VideosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
